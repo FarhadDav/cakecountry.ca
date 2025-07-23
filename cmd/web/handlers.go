@@ -1,20 +1,37 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
-	"strconv"
+	"os"
+	"path/filepath"
+	"strings"
 	"text/template"
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Server", "Go")
 
-	// Use the template.ParseFiles() function to read the template file into a
-	// template set. If there's an error, we log the detailed error message, use
-	// the http.Error() function to send an Internal Server Error response to the
-	// user, and then return from the handler so no subsequent code is executed.
+	// Scan carousel images folder
+	imgDir := "./ui/static/images/carousel"
+	files, err := os.ReadDir(imgDir)
+	if err != nil {
+		log.Print(err.Error())
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
+	var imgURLs []string
+	for _, file := range files {
+		if !file.IsDir() {
+			ext := strings.ToLower(filepath.Ext(file.Name()))
+			if ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".gif" {
+				imgURLs = append(imgURLs, "/static/images/carousel/"+file.Name())
+			}
+		}
+	}
+
+	// Parse template
 	ts, err := template.ParseFiles("./ui/html/pages/home.tmpl")
 	if err != nil {
 		log.Print(err.Error())
@@ -22,32 +39,16 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Then we use the Execute() method on the template set to write the
-	// template content as the response body. The last parameter to Execute()
-	// represents any dynamic data that we want to pass in, which for now we'll
-	// leave as nil.
-	err = ts.Execute(w, nil)
+	// Pass image URLs to template
+	data := struct {
+		CarouselImgs []string
+	}{
+		CarouselImgs: imgURLs,
+	}
+
+	err = ts.Execute(w, data)
 	if err != nil {
 		log.Print(err.Error())
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
-}
-
-func snippetView(w http.ResponseWriter, r *http.Request) {
-	id, err := strconv.Atoi(r.PathValue("id"))
-	if err != nil || id < 1 {
-		http.NotFound(w, r)
-		return
-	}
-
-	fmt.Fprintf(w, "Display a specific snippet with ID %d...", id)
-}
-
-func snippetCreate(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Display a form for creating a new snippet..."))
-}
-
-func snippetCreatePost(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusCreated)
-	w.Write([]byte("Save a new snippet..."))
 }

@@ -113,7 +113,8 @@
             font-weight: bold;
         }
         .btn:hover {
-            opacity: 0.8;
+            opacity: 1;
+            color: #000;
         }
 
         /* Main & Sections */
@@ -148,6 +149,7 @@
             font-size: 1.4rem;
             font-family: 'Rye', serif;
             font-weight: normal;
+            text-align: center;
         }
         main p {
             margin-bottom: 15px;
@@ -171,12 +173,12 @@
             height: 50vh;
             background: #65371d66;
         }
-        #contact_us h3 {
+        #contact_us h2 {
             font-family: 'Rye', 'serif';
             font-weight: normal;
             color: #fcf1d5;
             margin-bottom: 8px;
-            font-size: 1.2rem;
+            font-size: 1.8rem;
         }
         #contact_us ul {
             list-style: none;
@@ -196,6 +198,56 @@
         footer a {
             color: #ffb300;
         }
+
+        .carousel {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .carousel-container {
+            position: relative;
+            width: 100%;    /* Limits max size on large screens */
+            aspect-ratio: 2.43/1;    /* Keeps a nice ratio, remove if you want to adapt to image aspect */
+            overflow: hidden;
+            border-radius: 8px;
+            border: 2px solid #65371d66;
+            background: #65371d66;
+        }
+        .carousel-img {
+            opacity: 0;
+            transition: opacity 0.8s;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;   /* Shows full image, use cover for cropping */
+            pointer-events: none;
+        }
+        .carousel-img.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 1;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #dda854cc;
+            color: #43281d;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 2;
+            opacity: 0.8;
+        }
+        .carousel-btn.prev { left: 8px; }
+        .carousel-btn.next { right: 8px; }
 
         /* Desktop Overrides */
         @media (min-width: 768px) {

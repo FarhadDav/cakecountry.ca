@@ -21,7 +21,7 @@
         <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="#about">About Us</a></li>
+            <li><a href="#about_us">About Us</a></li>
             <li><a href="#contact_us">Contact Us</a></li>
         </ul>
         </nav>
@@ -32,11 +32,23 @@
         <div class="content">
             <h2>Welcome to Cake Country</h2>
             <p>Experience the sweetest slice of life with our handcrafted cakes.</p>
-            <button class="btn">Place your order now!</button>
+            <a class="btn" href="https://instagram.com/cakecountry_yyc" target="_blank" rel="noopener">Place your order now!</a>
         </div>
     </section>
 
-    <main class="about">
+    <!-- Image Carousel Start -->
+    <section class="carousel">
+        <div class="carousel-container">
+            {{range .CarouselImgs}}
+                <img src="{{.}}" class="carousel-img">
+            {{end}}
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
+        </div>
+</section>
+    <!-- Image Carousel End -->
+
+    <main class="about" id="about_us">
         <div class="overlay"></div>
         <div class="about-text">
             <h2>Our Story</h2>
@@ -55,7 +67,7 @@
 
     <div id="contact_us">
         <div class="content">
-            <h3>Place Your Order</h3>
+            <h2>Place Your Order</h2>
             <p>To place your order, use the links below. On-site ordering coming soon!</p>
             <ul>
                 <li><a href="https://www.instagram.com/cakecountry_yyc" target="_blank" rel="noopener">Instagram</a></li>
@@ -71,4 +83,37 @@
     </footer>
 
 </body>
+
+<script>
+    const imgs = document.querySelectorAll('.carousel-img');
+    let idx = 0;
+    showImg(idx);
+    function showImg(i) {
+        imgs.forEach((img, j) => {
+            img.classList.toggle('active', j === i);
+        });
+    }
+    function nextImg() {
+        idx = (idx + 1) % imgs.length;
+        showImg(idx);
+    }
+    function prevImg() {
+        idx = (idx - 1 + imgs.length) % imgs.length;
+        showImg(idx);
+    }
+    document.querySelector('.carousel-btn.prev').onclick = () => {
+        prevImg();
+        resetAutoScroll();
+    };
+    document.querySelector('.carousel-btn.next').onclick = () => {
+        nextImg();
+        resetAutoScroll();
+    };
+
+    let autoScroll = setInterval(nextImg, 3000);
+    function resetAutoScroll() {
+        clearInterval(autoScroll);
+        autoScroll = setInterval(nextImg, 3000);
+    }
+</script>
 </html>
