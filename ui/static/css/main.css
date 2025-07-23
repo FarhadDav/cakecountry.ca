@@ -1,7 +1,5 @@
 /* Reset & Base */
         *, *::before, *::after {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
         }
         .rye-regular {
@@ -12,7 +10,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a1a;
+            background: url('/static/images/background_main.png') center/cover no-repeat;
             color: #fff;
             line-height: 1.4;
         }
@@ -77,33 +75,18 @@
         /* Hero Section */
         .hero {
             position: relative;
+            background: no-repeat center/60% url('/static/images/logo.png');
             width: 100%;
             height: 50vh;
-            background: url('/static/images/background.png') center/cover no-repeat;
             overflow: hidden;
         }
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, transparent 40%, rgb(135 57 0) 100%);
-            pointer-events: none;
-        }
-        .hero .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-        }
         .hero .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             text-align: center;
-            width: 90%;
+            margin: auto;
             padding: 5px;
             border: 2px solid #65371d66;
             border-radius: 8px;
+            height: 50vh;
             background: #65371d66;
             font-family: 'Rye', 'serif';
         }
@@ -114,8 +97,8 @@
             color: #f4ddb1;
         }
         .hero p {
-        font-size: 1rem;
-        margin-bottom: 15px;
+            font-size: 1rem;
+            margin-bottom: 15px;
         }
         .btn {
             background: #dda854;
@@ -135,48 +118,83 @@
 
         /* Main & Sections */
         main {
-        padding: 20px 10px;
+            overflow: auto;
+            min-height: 600px;
+        }
+
+        main .overlay {
+            position: relative;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        main::before {
+            content: "";
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 40%, rgb(135 57 0) 100%);
+            pointer-events: none;
+        }
+
+        main .about-text {
+            margin: 10% auto 10%;
+            border: 2px solid #65371d66;
+            border-radius: 8px;
+            background: #65371d66;
         }
         main h2 {
-        color: #ffb300;
-        margin-bottom: 8px;
-        font-size: 1.4rem;
+            margin-left: 5%;
+            color: #fcf1d5;
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+            font-family: 'Rye', serif;
+            font-weight: normal;
         }
         main p {
-        margin-bottom: 15px;
-        font-size: 0.95rem;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        main .our-story {
+            margin-left: 5%;
+            margin-right: 5%;
+            color: #fcf1d5;
+            font-size: 1rem;
         }
 
         /* Contact Section */
         #contact_us {
-        background: #282828;
-        padding: 20px 10px;
-        border-radius: 6px;
-        margin: 20px 10px;
+            text-align: center;
+            margin: auto;
+            padding: 5px;
+            border: 2px solid #65371d66;
+            border-radius: 8px;
+            height: 50vh;
+            background: #65371d66;
         }
         #contact_us h3 {
-        color: #ffb300;
-        margin-bottom: 8px;
-        font-size: 1.2rem;
+            font-family: 'Rye', 'serif';
+            font-weight: normal;
+            color: #fcf1d5;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
         }
         #contact_us ul {
-        list-style: none;
+            list-style: none;
         }
         #contact_us li {
-        margin: 8px 0;
-        font-size: 0.95rem;
+            margin: 8px 0;
+            font-size: 0.95rem;
         }
 
         /* Footer */
         footer {
-        background: #111;
-        color: #aaa;
-        text-align: center;
-        padding: 10px;
-        font-size: 0.8rem;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.8rem;
         }
         footer a {
-        color: #ffb300;
+            color: #ffb300;
         }
 
         /* Desktop Overrides */
@@ -199,7 +217,7 @@
             gap: 30px;
         }
         .hero {
-            height: 70vh;
+            background: no-repeat center/30% url('/static/images/logo.png');
         }
         .hero h2 {
             font-size: 3rem;
@@ -211,11 +229,6 @@
             padding: 15px 30px;
             font-size: 1rem;
         }
-        main {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
         main h2 {
             font-size: 2rem;
         }
@@ -223,12 +236,14 @@
             font-size: 1rem;
         }
         #contact_us {
-            max-width: 1000px;
             margin: 40px auto;
             padding: 30px 20px;
         }
         footer {
             font-size: 0.9rem;
+        }
+        .our-story {
+            color: #fcf1d5;
         }
         .our-story:first-letter {
             /* Make it really big: */
