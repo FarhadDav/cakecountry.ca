@@ -28,6 +28,8 @@ func main() {
 
 	log.Print("starting server on port ", port)
 
-	err := http.ListenAndServe(":"+port, mux)
+	addr := "0.0.0.0:" + port
+	log.Printf("starting server on %s", addr)
+	err := http.ListenAndServe(addr, mux)
 	log.Fatal(err)
 }
