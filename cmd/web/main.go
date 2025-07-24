@@ -19,6 +19,7 @@ func main() {
 	mux.Handle("GET /static/", http.StripPrefix("/static", fileServer))
 
 	mux.HandleFunc("GET /{$}", home)
+	mux.HandleFunc("GET /instructions", instructions)
 
 	log.Print("starting server on :4000")
 

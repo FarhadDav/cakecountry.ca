@@ -28,51 +28,41 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/instructions">Instructions</a></li>
-            <li><a href="#about_us">About Us</a></li>
-            <li><a href="#contact_us">Contact Us</a></li>
+            <li><a href="/#about_us">About Us</a></li>
+            <li><a href="/#contact_us">Contact Us</a></li>
         </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="overlay"></div>
-        <div class="content">
-            <h2>Welcome to Cake Country</h2>
-            <p>Experience the sweetest slice of life with our handcrafted cakes.</p>
-            <a class="btn" href="https://instagram.com/cakecountry_yyc" target="_blank" rel="noopener">DM us to place your order now!</a>
-        </div>
-    </section>
 
-    <!-- Image Carousel Start -->
-    <section class="carousel">
-        <div class="carousel-container">
-            {{range .CarouselImgs}}
-                <img src="{{.}}" class="carousel-img">
-            {{end}}
-            <button class="carousel-btn prev">&#10094;</button>
-            <button class="carousel-btn next">&#10095;</button>
-        </div>
-</section>
-    <!-- Image Carousel End -->
-
-    <main class="about" id="about_us">
+    <main class="about" id="ordering-instructions">
         <div class="overlay"></div>
         <div class="about-text">
-            <h2>Our Story</h2>
-            <div class="our-story">
-                <p>Hello, my dear customer! My name is Sabina and I’m your baker, cake decorator, and the owner of Cake Country, and I’d love to introduce you to my creation.</p>
+            <h2>Instructions</h2>
+            <div class="instructions">
+                <h3>Deposits & Payments</h3>
+                <p>A 50% deposit is required to confirm your order. Orders are not booked until the deposit is received. Please note: All deposits are non-refundable.</p>
 
-                <p>Cake Country wasn’t created overnight. It’s the result of passion, growth, and a sweet journey that began back in May 2022. Our very first appearance was at a Farmers Market in Winnipeg, Manitoba, where our cakes quickly became a crowd favourite. Inspired by the love and support, we created something new for our vegan friends - Eight Layers Cakes. It was a delicious success!</p>
+                <h3>Last-Minute Orders</h3>
+                <p>We accept last-minute orders if placed by 6:00 PM the day before pickup. These orders are limited to standard or simple designs only.</p>
 
-                <p>I spent that first chapter sharing our treats and unique flavours with a beautiful community across local markets. Then life brought new changes, and we moved to Calgary. Surrounded by breathtaking mountain views and fresh inspiration, we decided to rebrand and Cake Country was born.</p>
+                <h3>Custom Orders</h3>
+                <p>For custom designs that require more detail and preparation, we kindly ask for 3–4 days’ notice.</p>
 
-                <p>Since May 2023, we’ve been baking from our cozy home kitchen in Calgary, offering custom cakes, cupcakes, and treats for all occasions. Whether you're celebrating a birthday, a big milestone, or simply surprising a loved one, we’re honoured to be a part of it and can’t wait to add something beautiful and delicious to your next big moment..</p>
+                <h3>Tiered Cakes & Delivery</h3>
+                <p>We currently only offer delivery for cakes with 2 tiers and up.</p>
+                <p>
+                    <ul>
+                        <li>Minimum order: $250</li>
+                        <li>Delivery fee: $40</li>
+                    </ul>
+                </p>
+                <span>Delivery is temporarily not available for single-tier cakes.</span>
             </div>
         </div>
         
     </main>
 
-    <!-- TODO: extract into separate component -->
     <div id="contact_us">
         <div class="content">
             <h2>Place Your Order</h2>
@@ -89,12 +79,12 @@
                             683 10 Street SW, Calgary, AB
                         </a>
                     </div>
-                </li>  
-            </ul>
-            <ul> Hours:
-                <li>Sunday - Monday: 11am - 5pm</a></li>
-                <li>Tuesday - Friday: 11am - 8pm</li>
-                <li>Saturday: Closed</li>
+                </li>
+                <ul>Hours:
+                    <li>Sunday - Monday: 11am - 5pm</a></li>
+                    <li>Tuesday - Friday: 11am - 8pm</li>
+                    <li>Saturday: Closed</li>
+                </ul>   
             </ul>
         </div>
     </div>
@@ -105,7 +95,7 @@
 
 </body>
 
-<script>
+<!-- <script>
     const imgs = document.querySelectorAll('.carousel-img');
     let idx = 0;
     showImg(idx);
@@ -136,5 +126,5 @@
         clearInterval(autoScroll);
         autoScroll = setInterval(nextImg, 3000);
     }
-</script>
+</script> -->
 </html>
