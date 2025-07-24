@@ -1,1 +1,1 @@
-web: bin/application --port $PORT
+web: bin/application
