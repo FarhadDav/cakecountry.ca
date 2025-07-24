@@ -1,1 +1,4 @@
-build: go build -o bin/app main.go
+# Buildfile
+build: |
+  GO111MODULE=on \
+  go build -mod=mod -o bin/application .
