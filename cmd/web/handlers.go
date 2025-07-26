@@ -9,12 +9,37 @@ import (
 	"text/template"
 )
 
+// TODO extract common logic for rendering templates
 func instructions(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Server", "Go")
 
 	templates := []string{
 		"./ui/html/base.tmpl",
 		"./ui/html/pages/instructions.tmpl",
+	}
+
+	ts, err := template.ParseFiles(templates...)
+	if err != nil {
+		log.Print(err.Error())
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
+	// Parse template
+	err = ts.ExecuteTemplate(w, "base", nil)
+	if err != nil {
+		log.Print(err.Error())
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+}
+
+func weddings(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Server", "Go")
+
+	templates := []string{
+		"./ui/html/base.tmpl",
+		"./ui/html/pages/weddings.tmpl",
 	}
 
 	ts, err := template.ParseFiles(templates...)
