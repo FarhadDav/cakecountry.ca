@@ -55,6 +55,8 @@
             margin-bottom: 10px;
             font-family: "Crimson Pro", serif;
             font-style: normal;
+            font-size: 1.4em;
+            text-align: center;
         }
         nav ul {
             list-style: none;
@@ -63,6 +65,7 @@
             gap: 10px;
             align-items: center;
             padding: 0;
+            font-size: 1.2rem;
         }
         nav a {
             padding: 6px 10px;
@@ -309,7 +312,7 @@
         }
         nav ul {
             flex-direction: row;
-            gap: 30px;
+            gap: 0;
         }
         .hero {
             background: no-repeat center/30% url('/static/images/logo.png');
