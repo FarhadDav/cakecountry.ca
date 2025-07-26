@@ -12,23 +12,41 @@ import (
 func instructions(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Server", "Go")
 
-	// Parse template
-	ts, err := template.ParseFiles("./ui/html/pages/instructions.tmpl")
+	templates := []string{
+		"./ui/html/base.tmpl",
+		"./ui/html/pages/instructions.tmpl",
+	}
+
+	ts, err := template.ParseFiles(templates...)
 	if err != nil {
 		log.Print(err.Error())
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
 
-	err = ts.Execute(w, nil)
+	// Parse template
+	err = ts.ExecuteTemplate(w, "base", nil)
 	if err != nil {
 		log.Print(err.Error())
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
 	}
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Server", "Go")
+
+	templates := []string{
+		"./ui/html/base.tmpl",
+		"./ui/html/pages/home.tmpl",
+	}
+
+	ts, err := template.ParseFiles(templates...)
+	if err != nil {
+		log.Print(err.Error())
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
 
 	// Scan carousel images folder
 	imgDir := "./ui/static/images/carousel"
@@ -49,14 +67,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	// Parse template
-	ts, err := template.ParseFiles("./ui/html/pages/home.tmpl")
-	if err != nil {
-		log.Print(err.Error())
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-		return
-	}
-
 	// Pass image URLs to template
 	data := struct {
 		CarouselImgs []string
@@ -64,9 +74,10 @@ func home(w http.ResponseWriter, r *http.Request) {
 		CarouselImgs: imgURLs,
 	}
 
-	err = ts.Execute(w, data)
+	err = ts.ExecuteTemplate(w, "base", data)
 	if err != nil {
 		log.Print(err.Error())
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
 	}
 }

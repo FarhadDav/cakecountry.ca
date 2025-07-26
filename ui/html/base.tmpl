@@ -1,0 +1,103 @@
+{{define "base"}}
+<head>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Rye&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Cake Country</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/logo.ico">
+</head>
+<body>
+    <div class="top-bar">
+        <div>
+        <span><i class="fas fa-map-marker-alt"></i></span>
+            <a href="https://www.google.com/maps?q=683+10+Street+SW,+Calgary,+AB" target="_blank" rel="noopener">
+                683 10 Street SW, Calgary, AB
+            </a>
+        </div>
+        <div><span></span><a href="tel:+15875819981">+1 587 581 9981</a></div>
+    </div>
+
+    <!-- TODO: extract into separate component -->
+    <header>
+        <!-- TODO: make these 2 separate and on top of each other -->
+        <div class="logo">Cake Country - Home Based Bakery</div>
+        <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/instructions">Instructions</a></li>
+            <li><a href="/#about_us">About Us</a></li>
+            <li><a href="#contact_us">Contact Us</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    {{template "main" .}}
+
+    <!-- TODO: extract into separate component -->
+    <div id="contact_us">
+        <div class="content">
+            <h2>Contact Us</h2>
+            <p>On-site ordering coming soon!</p>
+            <ul>
+                <li><a href="https://www.instagram.com/cakecountry_yyc" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://api.whatsapp.com/send?phone=15875819981" target="_blank" rel="noopener">WhatsApp</a></li>
+                <li><a href="tel:+15875819981">Phone: +1 587 581 9981</a></li>
+                <li><a href="mailto:cakecountryyyc@gmail.com">Email: cakecountryyyc@gmail.com</a></li>
+                <li>
+                    <div>
+                        <span><i class="fas fa-map-marker-alt"></i></span>
+                        <a href="https://www.google.com/maps?q=683+10+Street+SW,+Calgary,+AB" target="_blank" rel="noopener">
+                            683 10 Street SW, Calgary, AB
+                        </a>
+                    </div>
+                </li>  
+            </ul>
+            <ul> Hours:
+                <li>Sunday - Monday: 11am - 5pm</a></li>
+                <li>Tuesday - Friday: 11am - 8pm</li>
+                <li>Saturday: Closed</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        Built by hand with <span class="heart">&hearts;</span>
+    </footer>
+</body>
+<script>
+        const imgs = document.querySelectorAll('.carousel-img');
+        let idx = 0;
+        showImg(idx);
+        function showImg(i) {
+            imgs.forEach((img, j) => {
+                img.classList.toggle('active', j === i);
+            });
+        }
+        function nextImg() {
+            idx = (idx + 1) % imgs.length;
+            showImg(idx);
+        }
+        function prevImg() {
+            idx = (idx - 1 + imgs.length) % imgs.length;
+            showImg(idx);
+        }
+        document.querySelector('.carousel-btn.prev').onclick = () => {
+            prevImg();
+            resetAutoScroll();
+        };
+        document.querySelector('.carousel-btn.next').onclick = () => {
+            nextImg();
+            resetAutoScroll();
+        };
+
+        let autoScroll = setInterval(nextImg, 3000);
+        function resetAutoScroll() {
+            clearInterval(autoScroll);
+            autoScroll = setInterval(nextImg, 3000);
+        }
+    </script>
+{{end}}
