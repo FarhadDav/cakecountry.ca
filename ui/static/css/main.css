@@ -150,19 +150,19 @@
             border: 2px solid #65371d66;
             border-radius: 8px;
             background: #65371d66;
+            font-weight: normal;
         }
         main h2 {
             margin-left: 5%;
             color: #fcf1d5;
             margin-bottom: 8px;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-family: 'Rye', serif;
             font-weight: normal;
             text-align: center;
         }
         main p {
             margin-bottom: 15px;
-            font-size: 0.95rem;
         }
 
         main .our-story {
@@ -217,8 +217,14 @@
             margin-left: 0;
         }
 
+        .about-text ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+
         .instructions, .weddings {
             font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
             color: #fffdf2;
             text-align: center;
             font-weight: normal;
@@ -227,36 +233,41 @@
         }
 
         .wedding-sizes {
+            display: grid;
+            align-content: center;
+            justify-content: center;
+            justify-items: stretch;
+            grid-template-areas: 
+            "header header"
+            "tiers tiers";
+            background-color: #65371d66;
+        }
+
+        /* TODO do a table here! */
+        .wedding-tiers {             /* fixed width or max-width of your choice */
+            text-align: left;
             display: flex;
             flex-direction: column;
-            flex-wrap: nowrap;
-            gap: 12px;
-            justify-content: center;      /* center on the main (row) axis */
-            align-items: flex-start;  
-        }
-        .wedding-sizes > div ul {
-            flex: 0 0 200px; 
-            min-width: 0;
-            margin: 0 4px;
-            text-align: left;
-            font-weight: lighter;
-            align-items: flex-start;
-            align-content: space-around;
-            justify-content: space-evenly;
         }
 
-        .wedding-tiers {
-        }
-
+        /* Reset list styles and indent bullets consistently */
         .wedding-tiers ul {
-             margin: 0;              /* remove all default margins */
-            padding: 0;             /* remove default padding */
-            list-style-position: outside;
-            padding-left: 1.2em;    /* your chosen indent for the bullet */
+            grid-area: main;
+            margin: 0;
+            padding: 0;
+            padding-left: 1.2em;
+            list-style-position: inside;
         }
 
-        .wedding-sizes h4 {
-            margin-bottom: 0;
+        /* Optional: spacing inside each tier block */
+        .wedding-tiers h4 {
+            grid-area: header;
+            align-self: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .wedding-tiers > ul > li {
+            margin-bottom: 0.75rem;
         }
 
         .instructions, .weddings p, span {
@@ -264,8 +275,16 @@
         }
 
         .instructions, .weddings h3 {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-bottom: 0;
+            color: #fcf1d5;
+        }
+
+        .order-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
             color: #fcf1d5;
         }
 
@@ -387,9 +406,6 @@
         main h2 {
             font-size: 2rem;
         }
-        main p {
-            font-size: 1rem;
-        }
         #contact_us {
             margin: 40px auto;
             padding: 30px 20px;
@@ -399,11 +415,6 @@
         }
 
         .wedding-sizes {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            flex-direction: row;
-            align-content: flex-start;
-            justify-content: center;
+            column-gap: 2rem;
         }
     }
