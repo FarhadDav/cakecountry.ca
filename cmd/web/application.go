@@ -21,11 +21,11 @@ func main() {
 	// Use the mux.Handle() function to register the file server as the handler for
 	// all URL paths that start with "/static/". For matching paths, we strip the
 	// "/static" prefix before the request reaches the file server.
-	mux.Handle("GET /static/", http.StripPrefix("/static", fileServer))
+	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
 
-	mux.HandleFunc("GET /{$}", home)
-	mux.HandleFunc("GET /instructions", instructions)
-	mux.HandleFunc("GET /weddings", weddings)
+	mux.HandleFunc("/", home)
+	mux.HandleFunc("/instructions", instructions)
+	mux.HandleFunc("/weddings", weddings)
 
 	log.Print("starting server on port ", port)
 
