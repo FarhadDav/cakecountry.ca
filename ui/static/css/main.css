@@ -238,8 +238,8 @@
             justify-content: center;
             justify-items: stretch;
             grid-template-areas: 
-            "header header"
-            "tiers tiers";
+            "header"
+            "tiers";
             background-color: #65371d66;
         }
 
@@ -274,7 +274,8 @@
             font-weight: normal;
         }
 
-        .instructions, .weddings h3 {
+        .instructions > h3,
+        .weddings > h3 {
             font-size: 1.4rem;
             margin-bottom: 0;
             color: #fcf1d5;
@@ -416,5 +417,8 @@
 
         .wedding-sizes {
             column-gap: 2rem;
+            grid-template-areas: 
+            "header header"
+            "tiers tiers";
         }
     }
