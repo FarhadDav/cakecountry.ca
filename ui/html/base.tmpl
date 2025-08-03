@@ -12,27 +12,33 @@
 </head>
 <body>
     <div class="top-bar">
-        <div>
-        <span><i class="fas fa-map-marker-alt"></i></span>
-            <a href="https://www.google.com/maps?q=683+10+Street+SW,+Calgary,+AB" target="_blank" rel="noopener">
-                683 10 Street SW, Calgary, AB
-            </a>
+        <div class="top-bar-content">
+            <div>
+                <span><i class="fas fa-map-marker-alt"></i></span>
+                <a href="https://www.google.com/maps?q=683+10+Street+SW,+Calgary,+AB" target="_blank" rel="noopener">
+                    683 10 Street SW, Calgary, AB
+                </a>
+            </div>
+            <div><span></span><a href="#contact_us">Contact Us</a></div>
         </div>
-        <div><span></span><a href="#contact_us">Contact Us</a></div>
     </div>
 
     <!-- TODO: extract into separate component -->
-    <header>
-        <!-- TODO: make these 2 separate and on top of each other -->
-        <div class="logo"><a href="/">Cake Country - Home Based Bakery</a></div>
-        <nav>
-        <ul>
-            <li><a href="/#menu">Menu</a></li>
-            <li><a href="/weddings">Weddings</a></li>
-            <li><a href="/instructions">Instructions</a></li>
-        </ul>
-        </nav>
+     <header>
+        <div class="header-content">
+            <!-- TODO: make these 2 separate and on top of each other -->
+            <div class="logo"><a href="/">Cake Country - Home Based Bakery</a></div>
+            <nav>
+                <ul>
+                    <li><a href="/#menu">Menu</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/weddings">Weddings</a></li>
+                    <li><a href="/instructions">Instructions</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+    
 
     {{template "main" .}}
 

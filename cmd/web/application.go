@@ -26,6 +26,7 @@ func main() {
 	mux.HandleFunc("/", home)
 	mux.HandleFunc("/instructions", instructions)
 	mux.HandleFunc("/weddings", weddings)
+	mux.HandleFunc("/pricing", pricing)
 
 	log.Print("starting server on port ", port)
 

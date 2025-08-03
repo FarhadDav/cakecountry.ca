@@ -31,14 +31,21 @@
             color: #aaa;
             font-size: 0.8rem;
             padding: 5px 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
+
+        .tob-bar-content {
+            margin: 0 auto;          /* ← this centers it */
+            display: flex;
+            justify-content: space-between; /* or `center` if you want both items grouped in the middle */
+            align-items: center;
+            padding: 0 20px; 
+        }
+
         .top-bar div {
             display: flex;
             align-items: center;
             gap: 4px;
+            justify-content: space-between;
         }
 
         /* Header */
@@ -372,16 +379,138 @@
         .carousel-btn.prev { left: 8px; }
         .carousel-btn.next { right: 8px; }
 
+        /* Pricing Page Styles */
+        .pricing-guide {
+            padding: 20px 15px;
+            color: #411a0b;
+            max-width: 900px;
+            margin: 20px auto;
+            border: 2px solid #65371d66;
+            background: #65371d66;
+            border-radius: 8px;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pricing-header .pricing-logo {
+            max-width: 150px;
+            margin-bottom: -20px;
+        }
+
+        .pricing-header h1 {
+            font-family: 'Rye', serif;
+            font-weight: normal;
+            font-size: 2.5rem;
+            color: #411a0b;
+            margin: 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .price-item, .custom-size-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: #fffdf2;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e8d8c2;
+        }
+
+        .price-item-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px; /* Control image height */
+            margin-bottom: 15px;
+        }
+
+        .price-item-description h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #411a0b;
+            margin: 0 0 10px 0;
+        }
+
+        .price-item-description p {
+            font-family: 'Segoe UI', sans-serif;
+            color: #654321;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0 0 15px 0;
+        }
+
+        .price-tag {
+            background-color: #a54a43;
+            color: #fff;
+            font-family: 'Crimson Pro', serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .custom-size-section {
+            margin-top: 30px;
+        }
+
+        .pricing-contact {
+            text-align: center;
+            margin-top: 40px;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .pricing-contact p {
+            margin: 5px 0;
+        }
+
+        .pricing-contact a {
+            color: #a54a43;
+            font-size: 1.1rem;
+        }
+        .pricing-contact a:hover {
+            color: #D99E1B;
+        }
+
         /* Desktop Overrides */
         @media (min-width: 768px) {
         .top-bar {
             padding: 8px 20px;
             font-size: 0.9rem;
+            margin: 0 auto;
+            max-width: 900px;
         }
+
+        .top-bar-content {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+        }
+
         header {
             flex-direction: row;
             justify-content: space-between;
             padding: 5px;
+            margin: 0 auto;
+            flex-grow: 1;
+            max-width: 900px;
+        }
+
+        .header-content {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .logo {
             font-size: 1.5rem;
@@ -410,9 +539,24 @@
         #contact_us {
             margin: 40px auto;
             padding: 30px 20px;
+            max-width: 900px;
         }
         footer {
             font-size: 0.9rem;
+        }
+
+        .carousel {
+            max-width: 900px;
+            justify-self: center;
+        }
+
+        .content {
+            max-width: 900px;
+        }
+
+        .about-text {
+            max-width: 900px;
+            justify-self: center;
         }
 
         .wedding-sizes {
@@ -420,5 +564,28 @@
             grid-template-areas: 
             "header header"
             "tiers tiers";
+        }
+
+        .pricing-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .price-item, .custom-size-section {
+            flex-direction: row;
+            text-align: left;
+        }
+        
+        .price-item-image {
+            flex-basis: 40%;
+            margin-right: 20px;
+            margin-bottom: 0;
+        }
+
+        .price-item-description {
+            flex-basis: 60%;
+        }
+
+        .custom-size-section .price-item-image {
+            margin-bottom: 0;
         }
     }
