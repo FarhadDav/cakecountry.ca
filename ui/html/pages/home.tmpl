@@ -8,7 +8,7 @@
         <div class="content">
             <h2>Welcome to Cake Country</h2>
             <p>Experience the sweetest slice of life with our handcrafted cakes.</p>
-            <a class="btn" href="https://instagram.com/cakecountry_yyc" target="_blank" rel="noopener">DM us to place your order now!</a>
+            <a class="btn" href="https://instagram.com/cakecountry_yyc" target="_blank" rel="noopener" fetchpriority="high">DM us to place your order now!</a>
         </div>
     </section>
 
@@ -16,7 +16,7 @@
     <section class="carousel">
         <div class="carousel-container">
             {{range .CarouselImgs}}
-                <img src="{{.}}" class="carousel-img">
+                <img src="{{.}}" class="carousel-img" loading="lazy">
             {{end}}
             <button class="carousel-btn prev">&#10094;</button>
             <button class="carousel-btn next">&#10095;</button>

@@ -410,6 +410,7 @@
 
         .pricing-grid {
             display: grid;
+            grid-auto-rows: 1fr;
             gap: 30px;
         }
 
@@ -429,6 +430,14 @@
             height: auto;
             max-height: 200px; /* Control image height */
             margin-bottom: 15px;
+        }
+
+        .price-item-description {
+            display: flex;
+            flex-direction: column;
+            height: stretch;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .price-item-description h2 {
@@ -511,6 +520,7 @@
 
         .menu-grid {
             display: grid;
+            grid-template-columns: 1fr 1fr;
             margin-bottom: 30px;
         }
 
