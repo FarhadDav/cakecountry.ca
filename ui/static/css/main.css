@@ -479,6 +479,85 @@
             color: #D99E1B;
         }
 
+        /* Menu Page Styles */
+        .menu-guide {
+            padding: 20px 15px;
+            color: #fffdf2;
+            max-width: 900px;
+            margin: 20px auto;
+            background: #65371d66;
+            border: 2px solid #e8d8c2;
+            border-radius: 8px;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .menu-header .menu-logo {
+            max-width: 150px;
+            margin-bottom: -20px;
+        }
+
+        .menu-header h1 {
+            font-family: 'Rye', serif;
+            font-weight: normal;
+            font-size: 2.5rem;
+            color: #fcf1d5;
+            margin: 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            margin-bottom: 30px;
+        }
+
+        .menu-category h2 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: #fcf1d5;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .menu-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .menu-category li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fffdf2;
+        }
+
+        .special-cakes ul {
+            -moz-column-count: 2;
+            -webkit-column-count: 2;
+            column-count: 2;
+            border-bottom: 1px dashed #e8d8c2;
+        }
+
+        .menu-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #e8d8c2;
+        }
+
+        .menu-footer p {
+            font-size: 1.1rem;
+            color: #fffdf2;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
         /* Desktop Overrides */
         @media (min-width: 768px) {
         .top-bar {
@@ -587,5 +666,10 @@
 
         .custom-size-section .price-item-image {
             margin-bottom: 0;
+        }
+
+        .menu-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
     }
