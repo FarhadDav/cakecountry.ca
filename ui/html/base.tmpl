@@ -107,15 +107,9 @@
         if (banner) {
             const id = banner.dataset.id || 'default';
             const storageKey = 'announcement-hidden-' + id;
-            try {
-                if (localStorage.getItem(storageKey) === '1') {
-                    banner.classList.add('is-hidden');
-                }
-            } catch (e) { /* ignore storage errors */ }
 
             const dismiss = function() {
                 banner.classList.add('is-hidden');
-                try { localStorage.setItem(storageKey, '1'); } catch (e) {}
             };
             banner.addEventListener('click', dismiss);
             banner.addEventListener('keydown', function(ev){
