@@ -11,6 +11,12 @@
     <link rel="icon" type="image/x-icon" href="/static/images/logo.ico">
 </head>
 <body>
+    <div class="announcement-bar" role="status" aria-live="polite" data-id="2025-closure-aug24-sep3">
+        <div class="announcement-content">
+            <span class="announcement-text">We will be closed from August 24th to September 3rd</span>
+        </div>
+    </div>
+
     <div class="top-bar">
         <div class="top-bar-content">
             <div>
@@ -74,35 +80,54 @@
     </footer>
 </body>
 <script>
+    (function() {
+        // Carousel logic (only if carousel exists on the page)
         const imgs = document.querySelectorAll('.carousel-img');
-        let idx = 0;
-        showImg(idx);
-        function showImg(i) {
-            imgs.forEach((img, j) => {
-                img.classList.toggle('active', j === i);
-            });
-        }
-        function nextImg() {
-            idx = (idx + 1) % imgs.length;
-            showImg(idx);
-        }
-        function prevImg() {
-            idx = (idx - 1 + imgs.length) % imgs.length;
-            showImg(idx);
-        }
-        document.querySelector('.carousel-btn.prev').onclick = () => {
-            prevImg();
-            resetAutoScroll();
-        };
-        document.querySelector('.carousel-btn.next').onclick = () => {
-            nextImg();
-            resetAutoScroll();
-        };
+        if (imgs.length) {
+            let idx = 0;
+            const showImg = (i) => {
+                imgs.forEach((img, j) => img.classList.toggle('active', j === i));
+            };
+            const nextImg = () => { idx = (idx + 1) % imgs.length; showImg(idx); };
+            const prevImg = () => { idx = (idx - 1 + imgs.length) % imgs.length; showImg(idx); };
 
-        let autoScroll = setInterval(nextImg, 3000);
-        function resetAutoScroll() {
-            clearInterval(autoScroll);
-            autoScroll = setInterval(nextImg, 3000);
+            showImg(idx);
+
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const resetAutoScroll = () => { clearInterval(autoScroll); autoScroll = setInterval(nextImg, 3000); };
+            if (prevBtn) prevBtn.onclick = () => { prevImg(); resetAutoScroll(); };
+            if (nextBtn) nextBtn.onclick = () => { nextImg(); resetAutoScroll(); };
+
+            let autoScroll = setInterval(nextImg, 3000);
         }
+
+        // Dismissible announcement bar (click anywhere to hide)
+        const banner = document.querySelector('.announcement-bar');
+        if (banner) {
+            const id = banner.dataset.id || 'default';
+            const storageKey = 'announcement-hidden-' + id;
+            try {
+                if (localStorage.getItem(storageKey) === '1') {
+                    banner.classList.add('is-hidden');
+                }
+            } catch (e) { /* ignore storage errors */ }
+
+            const dismiss = function() {
+                banner.classList.add('is-hidden');
+                try { localStorage.setItem(storageKey, '1'); } catch (e) {}
+            };
+            banner.addEventListener('click', dismiss);
+            banner.addEventListener('keydown', function(ev){
+                if (ev.key === 'Enter' || ev.key === ' ') {
+                    ev.preventDefault();
+                    dismiss();
+                }
+            });
+            banner.setAttribute('tabindex', '0');
+            banner.setAttribute('role', 'button');
+            banner.setAttribute('aria-label', 'Dismiss announcement');
+        }
+    })();
     </script>
 {{end}}

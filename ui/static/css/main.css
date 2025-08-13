@@ -25,6 +25,24 @@
             color: #D99E1B;
         }
 
+        /* Announcement Bar */
+        .announcement-bar {
+            width: 100%;
+            background: #ffb300;
+            color: #411a0b;
+            text-align: center;
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+            padding: 10px 14px;
+            line-height: 1.2;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+        .announcement-content { width: 100%; max-width: 900px; margin: 0 auto; }
+        .announcement-bar.is-hidden { display: none !important; }
+        .announcement-bar:focus { outline: 2px dashed #65371d; outline-offset: 2px; }
+
         /* Top Bar */
         .top-bar {
             background: #111;
@@ -569,7 +587,11 @@
         }
 
         /* Desktop Overrides */
-        @media (min-width: 768px) {
+    @media (min-width: 768px) {
+        .announcement-bar{
+            margin: 0 auto;
+            max-width: 900px;
+        }    
         .top-bar {
             padding: 8px 20px;
             font-size: 0.9rem;
